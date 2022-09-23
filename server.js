@@ -1,6 +1,5 @@
 // depenencies
 const express = require('express');
-const fs = require('fs');
 const app = express();
 
 // creates port
@@ -11,6 +10,8 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
+require('./routes/apiRoutes')(app);
+require('./routes/htmlRoutes')(app);
 
 // starts server
 app.listen(PORT, () => {
